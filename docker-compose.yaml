@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  redis:
+    image: redis:6.2
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  flask-app:
+    build:
+      context: ./app
+    container_name: flask-app
+    ports:
+      - "8001:8001"
+    depends_on:
+      - redis
